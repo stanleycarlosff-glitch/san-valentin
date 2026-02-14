@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>¿Quieres ser mi San Valentín?</title>
+
+<style>
+body{
+    margin:0;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(to top,#ff4e8a,#ff99c8);
+    font-family:Arial, sans-serif;
+    overflow:hidden;
+}
+
+.carta{
+    background:#fff0f5;
+    padding:40px;
+    border-radius:20px;
+    text-align:center;
+    box-shadow:0 10px 25px rgba(0,0,0,0.2);
+    position:relative;
+    z-index:2;
+}
+
+h1{
+    color:#ff2e63;
+}
+
+.botones{
+    margin-top:20px;
+    position:relative;
+    height:100px;
+}
+
+button{
+    padding:10px 20px;
+    border:none;
+    border-radius:20px;
+    font-size:16px;
+    cursor:pointer;
+    position:absolute;
+    transition:0.3s;
+}
+
+#si{
+    background:#ff2e63;
+    color:white;
+    left:30%;
+}
+
+#no{
+    background:#333;
+    color:white;
+    left:60%;
+}
+
+.mensaje{
+    margin-top:20px;
+    font-size:20px;
+    color:#ff2e63;
+    display:none;
+}
+
+/* Lluvia de corazones */
+.corazon{
+    position:absolute;
+    color:red;
+    font-size:20px;
+    animation:caer 5s linear infinite;
+}
+
+@keyframes caer{
+    0%{ transform:translateY(-100px); opacity:1;}
+    100%{ transform:translateY(100vh); opacity:0;}
+}
+</style>
+</head>
+
+<body>
+
+<div class="carta">
+    <h1>¿Quieres ser mi San Valentín? 💖</h1>
+
+    <div class="botones">
+        <button id="si">Sí 💘</button>
+        <button id="no">No 😢</button>
+    </div>
+
+    <div class="mensaje" id="mensaje">
+        Sabía que dirías que sí 😍💞
+    </div>
+</div>
+
+<!-- Música romántica -->
+<audio id="musica" autoplay loop>
+    <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8f4b4bde3.mp3?filename=romantic-love-112199.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+const botonNo = document.getElementById("no");
+const botonSi = document.getElementById("si");
+const mensaje = document.getElementById("mensaje");
+
+botonNo.addEventListener("mouseover",()=>{
+    const x = Math.random()*(window.innerWidth-100);
+    const y = Math.random()*(window.innerHeight-50);
+    botonNo.style.left = x+"px";
+    botonNo.style.top = y+"px";
+});
+
+botonSi.addEventListener("click",()=>{
+    mensaje.style.display="block";
+});
+
+/* Crear corazones */
+setInterval(()=>{
+    const corazon=document.createElement("div");
+    corazon.classList.add("corazon");
+    corazon.innerHTML="💖";
+    corazon.style.left=Math.random()*100+"vw";
+    corazon.style.fontSize=Math.random()*20+15+"px";
+    document.body.appendChild(corazon);
+
+    setTimeout(()=>{ corazon.remove(); },5000);
+},300);
+</script>
+
+</body>
+</html>
