@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Katherine Tatiana ❤️</title>
+
+<style>
+body{
+    margin:0;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(to top,#ff4e8a,#ff99c8);
+    font-family:Arial, sans-serif;
+    overflow:hidden;
+    text-align:center;
+}
+
+.carta{
+    background:#fff0f5;
+    padding:40px;
+    border-radius:20px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.2);
+    position:relative;
+    z-index:2;
+    max-width:400px;
+}
+
+h1{
+    color:#ff2e63;
+}
+
+button{
+    padding:10px 20px;
+    border:none;
+    border-radius:20px;
+    font-size:16px;
+    cursor:pointer;
+    margin:10px;
+    transition:0.3s;
+}
+
+#si{
+    background:#ff2e63;
+    color:white;
+}
+
+#no{
+    background:#333;
+    color:white;
+    position:absolute;
+}
+
+.mensaje{
+    margin-top:20px;
+    font-size:18px;
+    color:#ff2e63;
+    display:none;
+}
+
+.spark{
+    display:none;
+    margin-top:15px;
+    background:black;
+    color:white;
+}
+
+/* corazones */
+.corazon{
+    position:absolute;
+    font-size:20px;
+    animation:caer 5s linear infinite;
+}
+
+@keyframes caer{
+    0%{ transform:translateY(-100px); opacity:1;}
+    100%{ transform:translateY(100vh); opacity:0;}
+}
+</style>
+</head>
+
+<body>
+
+<div class="carta">
+    <h1>Katherine Tatiana 💖</h1>
+    <p>¿Quieres ser mi San Valentín este año también? 😍</p>
+
+    <button id="si">Sí 💘</button>
+    <button id="no">No 😢</button>
+
+    <div class="mensaje" id="mensaje">
+        Segundo año que pasaremos 14 de febrero juntos ❤️✨
+    </div>
+
+    <button class="spark" id="sparkBtn">Escuchar nuestra canción 🎵</button>
+</div>
+
+<script>
+const botonNo = document.getElementById("no");
+const botonSi = document.getElementById("si");
+const mensaje = document.getElementById("mensaje");
+const sparkBtn = document.getElementById("sparkBtn");
+
+botonNo.addEventListener("mouseover",()=>{
+    const x = Math.random()*(window.innerWidth-100);
+    const y = Math.random()*(window.innerHeight-50);
+    botonNo.style.left=x+"px";
+    botonNo.style.top=y+"px";
+});
+
+botonSi.addEventListener("click",()=>{
+    mensaje.style.display="block";
+    sparkBtn.style.display="inline-block";
+
+    // explosión de corazones
+    for(let i=0;i<40;i++){
+        const corazon=document.createElement("div");
+        corazon.classList.add("corazon");
+        corazon.innerHTML="💖";
+        corazon.style.left=Math.random()*100+"vw";
+        corazon.style.fontSize=Math.random()*20+15+"px";
+        document.body.appendChild(corazon);
+        setTimeout(()=>{ corazon.remove(); },5000);
+    }
+});
+
+sparkBtn.addEventListener("click",()=>{
+    window.open("https://www.youtube.com/watch?v=9HDEHj2yzew","_blank");
+});
+</script>
+
+</body>
+</html>
